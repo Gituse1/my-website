@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Мій стартап</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="page-container">
+    
+    <header class="navbar">
+      <div class="nav-center">
+        <a href="Main.html" class="nav-btn">Головна</a>
+        <a href="market.html" class="nav-btn">Ринок</a>
+        <a href="investors.html" class="nav-btn">Інвестори</a>
+        <a href="#" class="nav-btn">Увійти/Зареєструватись</a>
+      </div>
+      <button id="profile-btn">👤</button> 
+    </header>
+
+    <main>
+      <section id="startup-form">
+        <h1>Створення стартапу</h1>
+        
+        <form id="startupForm">
+          <div class="form-group">
+            <label for="company-name">Назва компанії:</label>
+            <input type="text" id="company-name" name="company-name" placeholder="Введіть назву компанії" required>
+          </div>
+
+          <div class="form-group">
+            <label for="industry">Сфера діяльності:</label>
+            <select id="industry" name="industry">
+              <option value="IT">Інформаційні технології</option>
+              <option value="Health">Охорона здоров'я</option>
+              <option value="Finance">Фінанси</option>
+              <option value="Education">Освіта</option>
+              <option value="Retail">Роздрібна торгівля</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="employees">Кількість працівників:</label>
+            <input type="number" id="employees" name="employees" placeholder="Введіть кількість працівників" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="profits">Прибутки:</label>
+            <input type="number" id="profits" name="profits"  placeholder="Введіть рівень прибутків" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="expenses">Витрати:</label>
+            <input type="number" id="expenses" name="expenses" placeholder="Введіть витрати" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="markets">Ринки збуту:</label>
+            <input type="text" id="markets" name="markets" placeholder="Введіть ринки збуту" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="offices">Офіси:</label>
+            <input type="text" id="offices" name="offices" placeholder="Введіть локації офісів" required>
+          </div>
+          
+          <div class="form-group">
+            <button type="submit" class="submit-btn">Створити стартап</button>
+          </div>
+        </form>
+        <button id="apply-saved-btn" style="margin-top: 10px; display:none;">Застосувати існуючий стартап</button>
+
+<aside id="startup-list" style="margin-top: 20px;">
+  <h3>Стартапи:</h3>
+  <div id="startup-tabs"></div>
+</aside>
+
+      </section>
+
+      <!-- Цей блок буде додаватися після натискання кнопки "Створити стартап" -->
+      <section id="tools-container" style="display:none;">
+        <h2>Параметри стартапу</h2>
+        <p><strong>Назва:</strong> <span id="company-name-display"></span></p>
+        <p><strong>Сфера:</strong> <span id="industry-display"></span></p>
+        <p><strong>Витрати:</strong> <span id="expenses-display"></span></p>
+        <p><strong>Ринки:</strong> <span id="markets-display"></span></p>
+        <p><strong>Офіси:</strong> <span id="offices-display"></span></p>
+
+        <div class="input-row">
+          <strong>Прибутки:</strong> <span id="profit-value"></span>
+          <input type="number" id="profit-increase" placeholder="Збільшити на...">
+        </div>
+
+        <div class="input-row">
+          <strong>Працівники:</strong> <span id="employee-value"></span>
+          <input type="number" id="employee-increase" placeholder="Збільшити на...">
+        </div>
+      </section>
+
+
+
+      <button id="show-report-btn" style="display: none;">Статистика</button>
+
+<section id="report" style="display: none;">
+  <h2>Звіт про змодельовані параметри</h2>
+  
+  <canvas id="reportChart" width="400" height="200"></canvas>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Період</th>
+        <th>Реальні прибутки</th>
+        <th>Змодельовані прибутки</th>
+        <th>Реальні працівники</th>
+        <th>Змодельовані працівники</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Період 1</td>
+        <td id="real-profit-1">0</td>
+        <td id="simulated-profit-1">0</td>
+        <td id="real-employees-1">0</td>
+        <td id="simulated-employees-1">0</td>
+      </tr>
+      <tr>
+        <td>Період 2</td>
+        <td id="real-profit-2">0</td>
+        <td id="simulated-profit-2">0</td>
+        <td id="real-employees-2">0</td>
+        <td id="simulated-employees-2">0</td>
+      </tr>
+      <tr>
+        <td>Період 3</td>
+        <td id="real-profit-3">0</td>
+        <td id="simulated-profit-3">0</td>
+        <td id="real-employees-3">0</td>
+        <td id="simulated-employees-3">0</td>
+      </tr>
+      <tr>
+        <td>Період 4</td>
+        <td id="real-profit-4">0</td>
+        <td id="simulated-profit-4">0</td>
+        <td id="real-employees-4">0</td>
+        <td id="simulated-employees-4">0</td>
+      </tr>
+      <tr>
+        <td>Період 5</td>
+        <td id="real-profit-5">0</td>
+        <td id="simulated-profit-5">0</td>
+        <td id="real-employees-5">0</td>
+        <td id="simulated-employees-5">0</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+    </main>
+
+    
+
+    <footer class="footer">
+      <div class="footer-right">
+        <button class="footer-btn">Зв'язатися з нами</button>
+      </div>
+    </footer>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script src="script-startaps.js"></script>
+</body>
+</html>
